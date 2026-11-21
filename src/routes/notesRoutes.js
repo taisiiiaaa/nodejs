@@ -9,6 +9,7 @@ import {
 import {
   getAllNotesSchema,
   noteIdSchema,
+  createNoteSchema,
   updateNoteSchema,
 } from '../validations/notesValidation.js';
 import { celebrate } from 'celebrate';
@@ -19,7 +20,7 @@ router.get('/notes', celebrate(getAllNotesSchema), getAllNotes);
 
 router.get('/notes/:noteId', celebrate(noteIdSchema), getNoteById);
 
-router.post('/notes', createNote);
+router.post('/notes', celebrate(createNoteSchema), createNote);
 
 router.patch('/notes/:noteId', celebrate(updateNoteSchema), updateNote);
 

@@ -1,6 +1,5 @@
 import createHttpError from 'http-errors';
 import { Note } from '../models/note.js';
-import { TAGS } from '../constants/tags.js';
 
 export const getAllNotes = async (req, res) => {
   const { page = 1, perPage = 10, tag, search } = req.query;
@@ -10,7 +9,7 @@ export const getAllNotes = async (req, res) => {
   const notesQuery = Note.find();
 
   if (tag) {
-    notesQuery.where({ tag: { $in: TAGS } });
+    notesQuery.where({ tag });
   }
   if (search) {
     notesQuery.where({
