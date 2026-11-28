@@ -44,9 +44,7 @@ export const getNoteById = async (req, res) => {
   if (!note) {
     throw createHttpError(404, 'Note not found.');
   }
-  res.status(200).json({
-    note,
-  });
+  res.status(200).json(note);
 };
 
 export const createNote = async (req, res) => {
